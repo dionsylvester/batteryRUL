@@ -23,7 +23,7 @@ batteryRUL/
 ```
 
 **Acknowledgments**
-- Dataset source: https://www.kaggle.com/datasets/ignaciovinuales/batteryremaining-useful-life-rul
+- Dataset source: https://www.kaggle.com/datasets/ignaciovinuales/battery-remaining-useful-life-rul
 - This project supports Sustainable Development Goals 7 & 12
 
 **Contact**
