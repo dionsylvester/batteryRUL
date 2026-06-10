@@ -11,6 +11,7 @@ batteryRUL/
 ├── Battery_RUL.csv          # Battery RUL dataset
 ├── Model.ipynb              # Main Jupyter notebook
 ├── README.md                # Project documentation
+├── battery_rul_model.pkl    # Pickle of gradient boosting
 │
 └── results/                 # Visualizations
     ├── feature_importances_decision_tree.png
