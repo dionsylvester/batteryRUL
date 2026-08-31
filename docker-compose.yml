@@ -1,0 +1,16 @@
+services:
+  battery-rul-api:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: battery_rul_service
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_PATH: /app/battery_rul_model.pkl
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
