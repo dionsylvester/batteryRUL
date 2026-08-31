@@ -10,13 +10,20 @@ Interactive Streamlit web application to estimate battery RUL using Gradient Boo
 **Project Structure**
 ```
 batteryRUL/
+└── app/                     # FastAPI application
+    ├── __init__.py
+    ├── main.py
+    └── schemas.py
 │
-├── Battery_RUL.csv          # Battery RUL dataset
-├── Model.ipynb              # Main Jupyter notebook
-├── README.md                # Project documentation
 ├── battery_rul_model.pkl    # Pickle of gradient boosting
+├── Battery_RUL.csv          # Battery RUL dataset
+├── docker-compose.yml       # Container configuration
+├── dockerfile               # Docker build definition
+├── Model.ipynb              # Model notebook
+├── README.md                # Project documentation
+├── requirements.txt         # Required dependencies
 │
-└── results/                 # Visualizations
+└── results/                 # Evaluation plots and visualizations
     ├── feature_importances_decision_tree.png
     ├── feature_importances_gradient_boosting.png
     ├── feature_importances_random_forest.png
