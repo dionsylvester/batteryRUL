@@ -1,8 +1,8 @@
-  ---
-  title: Battery RUL API
-  sdk: docker
-  app_port: 8000
-  ---
+---
+title: Battery RUL API
+sdk: docker
+app_port: 8000
+---
 
 **Battery Health and Remaining Useful Life Prediction Using Lightweight Machine Learning Models**
 https://doi.org/10.1109/ICIMCIS68501.2025.11327063
