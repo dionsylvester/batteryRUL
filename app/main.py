@@ -8,6 +8,12 @@ from app.schemas import TelemetryInput, PredictionResponse, BatchTelemetryInput,
 MODEL_PATH = os.getenv("MODEL_PATH", "battery_rul_model.pkl")
 model_artifact = {}
 
+# order: discharge_time, decrement_v, max_v_discharge, min_v_charge, time_415v, time_cc, charging_time.
+SCALER_MEAN = np.array([4286.82997338656, 1426.7389480091622, 3.907725049900199, 3.5776343147039253,
+                        3686.362761558976, 5317.307093313373, 9945.013322521623])
+SCALER_SCALE = np.array([31770.769005050388, 13748.844772725866, 0.08994201069210925, 0.12195047868558291,
+                         8844.1084837652, 24277.775779047337, 25727.041894125614])
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     if not os.path.exists(MODEL_PATH):
@@ -44,7 +50,7 @@ def predict_rul(payload: TelemetryInput):
         ]])
 
         model = model_artifact["model"]
-        prediction = model.predict(features)
+        prediction = model.predict((features - SCALER_MEAN) / SCALER_SCALE)
 
         return PredictionResponse(
             predicted_rul=float(prediction[0])
@@ -72,7 +78,7 @@ def predict_batch_rul(payload: BatchTelemetryInput):
         ])
 
         model = model_artifact["model"]
-        predictions = model.predict(features)
+        predictions = model.predict((features - SCALER_MEAN) / SCALER_SCALE)
 
         return BatchPredictionResponse(
             predictions=[float(p) for p in predictions],
